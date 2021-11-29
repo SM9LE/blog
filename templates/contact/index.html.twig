@@ -10,10 +10,18 @@
             </h1>
         {% endif %}
 
+        {{ dump(contact) }}
+        <ul>
+            {% for contact in contact %}
+                <li>La personne {{ contact.nom }}, {{ contact.prenom }} vous a demandé quelque chose</li>
+            {% endfor %}
+        </ul>
+
         {% if city is defined and city is not empty %}
             <p>
                 Vous êtes sur la ville de {{ city }}
             </p>
         {% endif %}
+        {{ form(form) }}
     </div>
 {% endblock %}
