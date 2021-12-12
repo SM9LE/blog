@@ -48,6 +48,12 @@ class Contact
     private $Newsletter;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $Age;
+
+    /**
+     * @param $Age
      * @param $Nom
      * @param $Prenom
      * @param $Email
@@ -55,15 +61,6 @@ class Contact
      * @param $Message
      * @param $Newsletter
      */
-    public function __construct($Nom = "", $Prenom = "", $Email ="", $Sujet ="", $Message= "", $Newsletter= true)
-    {
-        $this->Nom = $Nom;
-        $this->Prenom = $Prenom;
-        $this->Email = $Email;
-        $this->Sujet = $Sujet;
-        $this->Message = $Message;
-        $this->Newsletter = $Newsletter;
-    }
 
     public function getId(): ?int
     {
@@ -138,6 +135,18 @@ class Contact
     public function setNewsletter(bool $Newsletter): self
     {
         $this->Newsletter = $Newsletter;
+
+        return $this;
+    }
+
+    public function getAge(): ?int
+    {
+        return $this->Age;
+    }
+
+    public function setAge(int $Age): self
+    {
+        $this->Age = $Age;
 
         return $this;
     }

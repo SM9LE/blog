@@ -24,8 +24,18 @@ class ContactController extends AbstractController
     public function index(Request $request, string $city = ""): Response
     {
         $name = $request->query->get('name');
-        $form = $this->FormContactBase($request);
+        $contact = new contact();
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($form->getData());
+            $entityManager->flush();
+            $contact = $form->getData();
 
+            return $this->redirectToRoute('contact');
+        }
         return $this->renderForm('contact/index.html.twig', [
             'city' => $city,
             'name' => $name,
@@ -33,10 +43,14 @@ class ContactController extends AbstractController
             'form' => $form,
         ]);
     }
-    private function FormContactBase(Request $request){
-        $contact = new Contact();
-        $form = $this->createForm( ContactType::class, $contact );
-
-        return $form;
+    /**
+     * @Route("/index2/{id}", name="random")
+     */
+    public function index2(Request $request, string $id = ""): Response
+    {
+        $id = $request->get('id');
+        return $this->render('contact/index2.html.twig', [
+            'contact' => $this->contactRepository->find($id),
+        ]);
     }
 }

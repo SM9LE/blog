@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+
+{% block body %}
+    <li>Id : {{ contact.id }}</li>
+    <li>Nom : {{ contact.nom }}</li>
+    <li>Prenom : {{ contact.prenom }}</li>
+    <li>Age : {{ contact.age }}</li>
+    <li>Email : {{ contact.email }}</li>
+    <li>Sujet : {{ contact.sujet }}</li>
+    <li>Message : {{ contact.message }}</li>
+
+    <li>newsletter :
+        {% if contact.newsletter == 0 %}
+            L'utilisateur refuse de recevoir les newsletter sur son adresse mail
+        {% else %}
+            L'utilisateur accepte de recevoir les newsletter sur son adresse mail
+        {% endif %} </li>
+{% endblock %}

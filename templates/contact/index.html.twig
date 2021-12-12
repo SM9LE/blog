@@ -6,14 +6,13 @@
     <div>
         {% if name is defined %}
             <h1>
-                Bonjour {{ name }}
+                Demandes de contact récentes : {{ contact | length }}
             </h1>
         {% endif %}
 
-        {{ dump(contact) }}
         <ul>
             {% for contact in contact %}
-                <li>La personne {{ contact.nom }}, {{ contact.prenom }} vous a demandé quelque chose</li>
+                <li><a href="{{path('random', {id: contact.id}) }}">La personne {{ contact.nom }} {{ contact.prenom }} souhaite prendre contact avec vous.</a></li>
             {% endfor %}
         </ul>
 

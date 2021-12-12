@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +15,12 @@ class ContactType extends AbstractType
         $builder
             ->add('Nom')
             ->add('Prenom')
+            ->add('Age')
+            ->add('Email')
+            ->add('Sujet')
+            ->add('Message')
             ->add('Newsletter')
+            ->add('Envoyer', SubmitType::class)
         ;
     }
 
