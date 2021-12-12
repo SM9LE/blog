@@ -1,0 +1,21 @@
+body
+{
+    background-color: grey;
+}
+.ici
+{
+    font-weight : bold;
+}
+#remise
+{
+    font-size: 17px;
+}
+#ecart
+{
+    margin: 3%;
+}
+img
+{
+    width: 20%;
+    height: 30%;
+}

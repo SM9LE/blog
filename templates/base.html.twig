@@ -15,17 +15,15 @@
 </head>
 <body>
 
-<h1>Welcome !</h1>
+<h1>Menu:</h1>
 
 {%  include './includes/header.html.twig' %}
-<img src="{{ asset('images/symfony.png') }}" alt="Symfony!"/>
 
 <main>
     {% block side %}
     {% endblock %}
 
     {% block body %}
-        Bloc surchargé
     {% endblock %}
 </main>
 {%  include './includes/footer.html.twig' %}

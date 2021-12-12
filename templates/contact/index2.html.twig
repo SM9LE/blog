@@ -1,21 +1,39 @@
-{% extends 'base.html.twig' %}
+{% block title %}{% endblock %}
 
-{% block title %}Contact{% endblock %}
-
+    {% block stylesheets %}
+        <link href="{{ asset('css/index2.css') }}" rel="stylesheet"/>
+    {% endblock %}
 
 {% block body %}
+
+    <h1>
+        Demandes de contact : numéro {{ contact.id }}
+    </h1>
+    <p>
     <li>Id : {{ contact.id }}</li>
     <li>Nom : {{ contact.nom }}</li>
     <li>Prenom : {{ contact.prenom }}</li>
-    <li>Age : {{ contact.age }}</li>
+    <li>Age : {{ contact.age }} ans</li>
     <li>Email : {{ contact.email }}</li>
     <li>Sujet : {{ contact.sujet }}</li>
     <li>Message : {{ contact.message }}</li>
-
-    <li>newsletter :
+    <li>Newsletter :
         {% if contact.newsletter == 0 %}
-            L'utilisateur refuse de recevoir les newsletter sur son adresse mail
+        {{ contact.prenom }} refuse de recevoir les newsletter sur son adresse mail
         {% else %}
-            L'utilisateur accepte de recevoir les newsletter sur son adresse mail
-        {% endif %} </li>
+            {{ contact.prenom }} accepte de recevoir les newsletter sur son adresse mail
+        {% endif %}
+    </li>
+    </p>
+
+    <p id="remise">
+    Pour revenir sur les demandes de contact récentes, <a href="{{path('contact')}}" class="ici">cliquez ici.</a>
+    </p>
+
+    <div id="ecart"></div>
+    <p><h1>Dernier article présent sur le blog:</h1></p>
+    <p>
+    <a class="ici" a href="{{ path('blog') }}">Max verstappen sort victorieux de la course d'abu dhabi !</a>
+    <div><img src="{{ asset('images/max.png') }}" alt="Max Verstappen champion du monde!"/></div>
+    </p>
 {% endblock %}
